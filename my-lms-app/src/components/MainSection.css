@@ -1,0 +1,41 @@
+#random-courses {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.course {
+    text-align: center;
+    padding: 20px;
+    margin: 0 15px 10px 0;
+    background-color: #e6f2ff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial {
+    text-align: center;
+    padding: 20px;
+    margin: 0 15px 10px 0;
+    background-color: #e6f2ff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    background-color: #003366; /* Dark blue */
+    padding: 10px;
+    display: flex;
+    justify-content: space-around; /* Even spacing */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
