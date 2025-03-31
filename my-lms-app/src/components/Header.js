@@ -1,5 +1,6 @@
 import './styles.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import logoImage from "./logo.jpg";
 
 
 function Header() {
@@ -12,14 +13,14 @@ function Header() {
             <link rel="stylesheet" type="text/css" href="styles.css"/>
         </head>
         <header>
-            <img src="components/logo.jpg" alt="LMS Logo" style={{width: '100px', height: '100px'}}/>
+            <img src={logoImage} alt="LMS Logo" style={{width: '100px', height: '100px'}}/>
             <h1>LMS - Learning Management System</h1>
         </header>
         <div>
           <nav>
-              <a href="login.html">Login</a> 
-              <a href="leaderboard.html">Leaderboard</a> 
-              <a href="#about">About LMS</a>
+               <Link to="/home">Home</Link>
+                <Link to="/courses">Courses</Link>
+                <Link to="/login">Login</Link>
           </nav>
         </div>
       </div>

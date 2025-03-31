@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import courses from '../data/courses';
 import testimonials from '../data/testimonials';
+import courseImage from '../images/course1.jpg';
 import './MainSection.css';
 
 function MainSection() {
@@ -32,7 +33,7 @@ function MainSection() {
             <div id="random-courses">
                 {courseData.map((course) => (
                     <div class="course">
-                        <img src={course.image} alt="Course 1"/>
+                        <img src={courseImage} alt="Course 1"/>
                         <p>Course ID: {course.id}</p> <br/>
                         <p>Course Name: {course.name}</p> <br/>
                         <p>Course Instructor: {course.instructor}</p> <br/>
