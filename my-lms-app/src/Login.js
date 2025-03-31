@@ -1,11 +1,11 @@
-import AppHeader from './components/AppHeader';
+import Header from './components/Header';
 import LoginForm from './components/LoginForm';
 import Footer from './components/Footer';
 
 function Login() {
     return (
       <div className="Login">
-        <AppHeader />
+        <Header />
         <LoginForm />
         <Footer />
       </div>

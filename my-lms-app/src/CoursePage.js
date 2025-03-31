@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import AppHeader from './components/AppHeader';
+import Header from './components/Header';
 import Footer from './components/Footer';
 import CourseCatalog from './components/CourseCatalog';
 import EnrollmentList from './components/EnrollmentList';
@@ -52,7 +52,7 @@ function CoursesPage() {
 
     return (
         <div className="courses-page">
-            <AppHeader />
+            <Header />
             <div className="content">
                 <CourseCatalog
                     onEnroll={handleEnroll}

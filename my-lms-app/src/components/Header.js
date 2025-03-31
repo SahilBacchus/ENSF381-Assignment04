@@ -2,7 +2,7 @@ import './styles.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
-function AppHeader() {
+function Header() {
     return (
       <div className="AppHeader">
         <head>
