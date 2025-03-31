@@ -4,7 +4,7 @@ import { ThemeContext } from './LoginForm';
 import DisplayStatus from './DisplayStatus';
 
 function AuthMessage() {
-    const { context } = useContext(ThemeContext);
+    const { result } = useContext(ThemeContext);
 
     return (
         <div className="AuthMessage">

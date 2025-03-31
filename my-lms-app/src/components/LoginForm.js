@@ -6,9 +6,9 @@ import AuthMessage from './AuthMessage';
 export const ThemeContext = createContext(null);
 
 function LoginForm() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [result, setResult] = useState({success: '', msg: ''});
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [result, setResult] = useState({success: "", msg: ""});
     const [data, setData] = useState(null);
     const navigate = useNavigate();
 
@@ -17,9 +17,11 @@ function LoginForm() {
       }, []);
 
       useEffect(() => {
-        setTimeout(function() {
-            navigate("/home");
-        }, 2000);
+        if (result.success === "success") {
+            setTimeout(function() {
+                navigate("/home");
+            }, 2000);
+        }
       }, [result, navigate]);
     
     async function fetchData() {
@@ -35,19 +37,21 @@ function LoginForm() {
         let success  = false;
         
         if (!password || !username) {
-            setStatus({
+            console.log("Password and username cannot be empty");
+            setResult({
               type: "error",
               message: "Password and username cannot be empty",
             });
-            return false;
+            return;
           }
 
         if (password.length < 8) {
-            setStatus({
+            console.log("Password must be at least 8 characters long");
+            setResult({
               type: "error",
               message: "Password must be at least 8 characters long",
             });
-            return false;
+            return;
           }
 
           for (let i = 0; i < data.length; i++) {
@@ -55,6 +59,7 @@ function LoginForm() {
             if (username == user.username && password == user.email) {
                 console.log("Success");
                 setResult({success: 'success', msg: 'Login successful'});
+                success = true;
 
                 //resultBox.style = "border: 2px solid black";
                 //resultBox.innerHTML = "Login successful! Redirecting...";
@@ -63,6 +68,7 @@ function LoginForm() {
           
         if (!success) {
             setResult({success: 'error', msg: 'Login failed, please try again'});
+            return;
             //console.log("Falied");
             //resultBox.style = "border: 2px solid black";
             //document.getElementById("login_result").innerHTML = "Invalid username or password!";
@@ -72,10 +78,10 @@ function LoginForm() {
         <div className="LoginForm">
             <h2>LMS Login</h2>
             <div class="form">
-                <label>Username:</label>
+                <label>Username:</label><br/>
                 <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
-        
-                <label>Password:</label>
+                <br/>
+                <label>Password:</label><br/>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             </div>
             <button onClick={validateCreds}>Login</button>
@@ -86,7 +92,7 @@ function LoginForm() {
             <div id="login_result">
 
             </div>
-            <ThemeContext.Provider value={{username, password}}>
+            <ThemeContext.Provider value={{username, password, result}}>
                 <AuthMessage />
             </ThemeContext.Provider>
         </div>
