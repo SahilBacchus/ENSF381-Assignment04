@@ -23,7 +23,6 @@ function CourseItem({ course, onEnroll, isEnrolled }) {
             <img src={isEnrolled ? pendingImage : courseImage} alt={course.name} className="course-image" />
             <h3>{course.name}</h3>
             <p><b>Instructor:</b> {course.instructor}</p>
-            <p><b>Duration:</b> {course.duration}</p>
             {showDescription && (
                 <p className="course-description">{course.description}</p>
             )}
