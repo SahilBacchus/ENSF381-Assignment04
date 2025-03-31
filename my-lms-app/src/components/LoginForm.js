@@ -40,7 +40,7 @@ function LoginForm() {
             console.log("Password and username cannot be empty");
             setResult({
               type: "error",
-              message: "Password and username cannot be empty",
+              msg: "Password and username cannot be empty",
             });
             return;
           }
@@ -49,7 +49,7 @@ function LoginForm() {
             console.log("Password must be at least 8 characters long");
             setResult({
               type: "error",
-              message: "Password must be at least 8 characters long",
+              msg: "Password must be at least 8 characters long",
             });
             return;
           }
