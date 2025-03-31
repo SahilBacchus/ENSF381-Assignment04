@@ -1,7 +1,7 @@
-function DisplayStatus(props) {
+function DisplayStatus({type, msg}) {
     return (
         <div className="DisplayStatus">
-            props.type ? <p>Login successful! Redirecting...</p> : <p>Invalid username or password!</p>
+            {type === 'success' ? <p color='green'>{msg}</p> : <p color='indianred'>{msg}</p>}
         </div>
     );
   }

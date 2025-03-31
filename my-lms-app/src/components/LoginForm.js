@@ -8,6 +8,7 @@ export const ThemeContext = createContext(null);
 function LoginForm() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [result, setResult] = useState({success: '', msg: ''});
     const [data, setData] = useState(null);
     const navigate = useNavigate();
 
@@ -15,6 +16,11 @@ function LoginForm() {
         fetchData();
       }, []);
 
+      useEffect(() => {
+        setTimeout(function() {
+            navigate("/home");
+        }, 2000);
+      }, [result, navigate]);
     
     async function fetchData() {
         console.log("Fetching data");
@@ -28,24 +34,38 @@ function LoginForm() {
         let resultBox = document.getElementById("login_result");
         let success  = false;
         
-        for (let i = 0; i < data.length; i++) {
+        if (!password || !username) {
+            setStatus({
+              type: "error",
+              message: "Password and username cannot be empty",
+            });
+            return false;
+          }
+
+        if (password.length < 8) {
+            setStatus({
+              type: "error",
+              message: "Password must be at least 8 characters long",
+            });
+            return false;
+          }
+
+          for (let i = 0; i < data.length; i++) {
             let user = data[i];
             if (username == user.username && password == user.email) {
                 console.log("Success");
-                success = true;
+                setResult({success: 'success', msg: 'Login successful'});
 
-                resultBox.style = "border: 2px solid black";
-                resultBox.innerHTML = "Login successful! Redirecting...";
-
-                setTimeout(function() {
-                    navigate("/home");
-                }, 2000);
+                //resultBox.style = "border: 2px solid black";
+                //resultBox.innerHTML = "Login successful! Redirecting...";
             }
         }
+          
         if (!success) {
-            console.log("Falied");
-            resultBox.style = "border: 2px solid black";
-            document.getElementById("login_result").innerHTML = "Invalid username or password!";
+            setResult({success: 'error', msg: 'Login failed, please try again'});
+            //console.log("Falied");
+            //resultBox.style = "border: 2px solid black";
+            //document.getElementById("login_result").innerHTML = "Invalid username or password!";
         }
     }
     return (
